@@ -1,0 +1,104 @@
+
+class {
+  onCreate(input, out) {
+    this.state = { 
+      scores: 0,
+      equation: null,
+      answer: null,
+      value: null,
+      selectedOption: null,
+      mappingOptions: {
+          add: {
+            op: '+',
+            label: '+'
+          },
+          substract: {
+            op: '-',
+            label: '-'
+          },
+          multiply: {
+            op: '*',
+            label: 'x'
+          }
+      },
+      options: [
+        {
+          text: '',
+          value: ''
+        },
+        {
+          text: 'Addition',
+          value: 'add'
+        },
+        {
+          text: 'Subtraction',
+          value: 'subtract'
+        },
+        {
+          text: 'Multiplication',
+          value: 'multiply'
+        }
+      ]
+    };
+  }
+  setEquation() {
+    const first = Math.floor((Math.random() * 10) + 1)
+    const second = Math.floor((Math.random() * 10) + 1)
+    console.log(this.state.selectedOption);
+    const current = this.state.mappingOptions[this.state.selectedOption];
+    if(!current) return;
+    this.state.equation = `${first} ${current.label} ${second}`
+    this.state.answer = eval(`${first} ${current.op} ${second}`)
+  }
+  handleChangeSelection(e) {
+    this.state.selectedOption = e.target.value;
+    this.setEquation()
+  }
+  handleChangeValue(e) {
+    this.state.value = parseInt(e.target.value, 10)
+  }
+  handleSubmit() {
+    const correct = this.state.value === this.state.answer
+    if(correct) {
+       Swal.fire(
+        'Good job!',
+        'Correct answer',
+        'success'
+      )
+    } else {
+      Swal.fire(
+        'Sorry',
+        `Answer is ${this.state.answer}`,
+        'error'
+      )
+    }
+    this.setEquation()
+  }
+}
+
+style {
+  .input-elem {
+    max-width: 80px;
+    border: 0;
+    border-bottom: 2px solid #000;
+    background: transparent;
+    text-align: center;
+  }
+}
+
+
+<div.container>
+  <h1.text-center>Fun with Math</h1>
+  <select.form-control on-change("handleChangeSelection")>
+      <for|option, index| of=state.options>
+        <option value=option.value>${option.text}</option>
+    </for>
+  </select>
+  <if(state.selectedOption)>
+    <p.display-4.d-inline-block>${state.equation} = </p>
+    <input.display-4.d-inline-block.input-elem type="text" on-change("handleChangeValue") />
+    <div>
+    <button.btn.btn-info on-click("handleSubmit")>Answer</button>
+    </div>
+  </if>
+</div>

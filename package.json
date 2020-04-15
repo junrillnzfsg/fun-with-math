@@ -1,0 +1,46 @@
+{
+  "name": "multiplication",
+  "description": "",
+  "version": "1.0.0",
+  "main": "dist/server/main.js",
+  "scripts": {
+    "build": "NODE_ENV=production webpack",
+    "start": "webpack-dev-server",
+    "start:prod": "NODE_ENV=production node dist/server/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nm123github/marko-codesandbox.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nm123github/marko-codesandbox/issues"
+  },
+  "homepage": "https://github.com/nm123github/marko-codesandbox/",
+  "dependencies": {
+    "express": "^4.16.4",
+    "marko": "^4.16.9",
+    "purecss": "^1.0.0",
+    "raptor-pubsub": "^1.0.5",
+    "raptor-util": "^3.1.0",
+    "serve-static": "^1.13.2",
+    "spawn-server-webpack-plugin": "github:nm123github/spawn-server-webpack-plugin#master"
+  },
+  "devDependencies": {
+    "@marko/webpack": "^1.0.1",
+    "clean-webpack-plugin": "^2.0.1",
+    "css-loader": "^2.1.1",
+    "file-loader": "^3.0.1",
+    "ignore-emit-webpack-plugin": "^1.0.2",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
+    "marko-cli": "^6.0.6",
+    "mini-css-extract-plugin": "^0.5.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "svg-url-loader": "^2.3.2",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.3.0"
+  },
+  "keywords": []
+}
